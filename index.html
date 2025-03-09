@@ -471,6 +471,18 @@
               <input id="company" name="company" placeholder="Nombre de la empresa" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-white dark:placeholder:text-gray-500" />
             </div>
             <div class="space-y-2">
+                <label for="interest" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  Nivel de interés
+                </label>
+                <select name="interest" id="interest" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50">
+                  <option value="">Selecciona una opción</option>
+                  <option value="muy-interesado">Muy interesado - Tengo un caso de uso concreto</option>
+                  <option value="interesado">Interesado - Me gustaría saber más</option>
+                  <option value="curioso">Curioso - Es un concepto interesante</option>
+                  <option value="feedback">Solo quiero dar feedback</option>
+                </select>
+              </div>
+            <div class="space-y-2">
               <label for="message" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 dark:text-white">
                 Mensaje
               </label>
@@ -591,7 +603,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             // Codifica la URL del endpoint en Base64 para evitar exposición directa
             const encodedUrl = 'aHR0cHM6Ly9icmlkZ2l0LmNpdmVpcmEubmV0L3dlYmhvb2svMTAwNTE0ZjctYWZmNy00ZWU5LWFjZTctY2NhNDVkYTZjNzUx';
-            const endpoint = atob(encodedEndpoint);
+            const endpoint = atob(encodedUrl);
             document.getElementById("contact-form").action = endpoint;
         });
 
