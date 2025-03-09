@@ -476,7 +476,7 @@
               </label>
               <textarea id="message" name="message" placeholder="Cuéntenos sobre su interés en Phylax..." class="flex min-h-[120px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-white dark:placeholder:text-gray-500"></textarea>
             </div>
-            <div class="g-recaptcha" data-sitekey="6LedUe8qAAAAACX9nazDQdZ4B8doxagAg0cRCQps"></div>
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
             <button type="submit" class="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring w-full h-10">
               Enviar Mensaje
             </button>
@@ -600,7 +600,20 @@
 
     // Verificar parámetro 'send' al cargar la página
     window.addEventListener('load', checkForSendParameter);
+
   </script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LedUe8qAAAAACX9nazDQdZ4B8doxagAg0cRCQps"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        grecaptcha.ready(function() {
+        grecaptcha.execute('6LedUe8qAAAAACX9nazDQdZ4B8doxagAg0cRCQps', { action: 'submit' }).then(function(token) {
+            document.getElementById("g-recaptcha-response").value = token;
+            event.target.submit(); // Ahora sí envía el formulario
+        }).catch(function(error) {
+            console.error("Error en reCAPTCHA:", error);
+        });
+        });
+    });
+  </script>
 </body>
 </html>
