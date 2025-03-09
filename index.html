@@ -314,62 +314,73 @@
       </div>
       <div class="mx-auto max-w-3xl py-12">
         <ol class="relative border-l border-muted-foreground/20 dark:border-gray-700">
-          <!-- Ajustado el margen izquierdo de los li del timeline de ml-6 a ml-10 -->
-          <li class="mb-10 ml-10" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
-            <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
-              <span class="text-xs font-bold text-primary-foreground">1</span>
-            </span>
-            <h3 class="text-lg font-semibold dark:text-white">Definir Relying-Parties y Trusted-Clients</h3>
-            <p class="text-muted-foreground dark:text-gray-300">
-              Configure las aplicaciones para las que Phylax dará servicio, estableciendo la base del sistema.
-            </p>
-          </li>
-          <li class="mb-10 ml-10" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
-            <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
-              <span class="text-xs font-bold text-primary-foreground">2</span>
-            </span>
-            <h3 class="text-lg font-semibold dark:text-white">Registrar Resources y Scopes</h3>
-            <p class="text-muted-foreground dark:text-gray-300">
-              Defina los recursos y alcances que determinan las acciones permitidas sobre las aplicaciones.
-            </p>
-          </li>
-          <li class="mb-10 ml-10" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
-            <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
-              <span class="text-xs font-bold text-primary-foreground">3</span>
-            </span>
-            <h3 class="text-lg font-semibold dark:text-white">Configurar Dominios de Seguridad</h3>
-            <p class="text-muted-foreground dark:text-gray-300">
-              Establezca grupos de permisos genéricos sobre los recursos/scopes para facilitar la gestión.
-            </p>
-          </li>
-          <li class="mb-10 ml-10" data-aos="fade-right" data-aos-duration="800" data-aos-delay="400">
-            <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
-              <span class="text-xs font-bold text-primary-foreground">4</span>
-            </span>
-            <h3 class="text-lg font-semibold dark:text-white">Crear Tenants (Inquilinos)</h3>
-            <p class="text-muted-foreground dark:text-gray-300">
-              Configure inquilinos que pueden usar todas las aplicaciones o solo una parte de ellas.
-            </p>
-          </li>
-          <li class="mb-10 ml-10" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">
-            <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
-              <span class="text-xs font-bold text-primary-foreground">5</span>
-            </span>
-            <h3 class="text-lg font-semibold dark:text-white">Definir Usuarios y Roles</h3>
-            <p class="text-muted-foreground dark:text-gray-300">
-              Cree usuarios dentro de cada tenant y asigne roles agrupando dominios de seguridad.
-            </p>
-          </li>
-          <li class="ml-10" data-aos="fade-right" data-aos-duration="800" data-aos-delay="600">
-            <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
-              <span class="text-xs font-bold text-primary-foreground">6</span>
-            </span>
-            <h3 class="text-lg font-semibold dark:text-white">Asignar Identidades por Aplicación</h3>
-            <p class="text-muted-foreground dark:text-gray-300">
-              Cada usuario puede tener una identidad por cada relying-party o trusted-client, indicando sus roles específicos.
-            </p>
-          </li>
-        </ol>
+            <li class="relative mb-10 ml-10 aos-init aos-animate" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+                <span class="absolute left-0 -translate-x-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
+                    <span class="text-xs font-bold text-primary-foreground">1</span>
+                </span>
+                <div class="pl-8"> <!-- Agrega padding-left para evitar superposición -->
+                    <h3 class="text-lg font-semibold dark:text-white">Definir Relying-Parties y Trusted-Clients</h3>
+                    <p class="text-muted-foreground dark:text-gray-300">
+                        Configure las aplicaciones para las que Phylax dará servicio, estableciendo la base del sistema.
+                    </p>
+                </div>
+            </li>
+            <li class="relative mb-10 ml-10 aos-init aos-animate" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+                <span class="absolute left-0 -translate-x-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
+                    <span class="text-xs font-bold text-primary-foreground">2</span>
+                </span>
+                <div class="pl-8">
+                    <h3 class="text-lg font-semibold dark:text-white">Registrar Resources y Scopes</h3>
+                    <p class="text-muted-foreground dark:text-gray-300">
+                        Defina los recursos y alcances que determinan las acciones permitidas sobre las aplicaciones.
+                    </p>
+                </div>
+            </li>
+            <li class="relative mb-10 ml-10 aos-init aos-animate" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                <span class="absolute left-0 -translate-x-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
+                    <span class="text-xs font-bold text-primary-foreground">3</span>
+                </span>
+                <div class="pl-8">
+                    <h3 class="text-lg font-semibold dark:text-white">Configurar Dominios de Seguridad</h3>
+                    <p class="text-muted-foreground dark:text-gray-300">
+                        Establezca grupos de permisos genéricos sobre los recursos/scopes para facilitar la gestión.
+                    </p>
+                </div>
+            </li>
+            <li class="relative mb-10 ml-10 aos-init aos-animate" data-aos="fade-right" data-aos-duration="800" data-aos-delay="400">
+                <span class="absolute left-0 -translate-x-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
+                    <span class="text-xs font-bold text-primary-foreground">4</span>
+                </span>
+                <div class="pl-8">
+                    <h3 class="text-lg font-semibold dark:text-white">Crear Tenants (Inquilinos)</h3>
+                    <p class="text-muted-foreground dark:text-gray-300">
+                        Configure inquilinos que pueden usar todas las aplicaciones o solo una parte de ellas.
+                    </p>
+                </div>
+            </li>
+            <li class="relative mb-10 ml-10 aos-init aos-animate" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">
+                <span class="absolute left-0 -translate-x-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
+                    <span class="text-xs font-bold text-primary-foreground">5</span>
+                </span>
+                <div class="pl-8">
+                    <h3 class="text-lg font-semibold dark:text-white">Definir Usuarios y Roles</h3>
+                    <p class="text-muted-foreground dark:text-gray-300">
+                        Cree usuarios dentro de cada tenant y asigne roles agrupando dominios de seguridad.
+                    </p>
+                </div>
+            </li>
+            <li class="relative ml-10 aos-init aos-animate" data-aos="fade-right" data-aos-duration="800" data-aos-delay="600">
+                <span class="absolute left-0 -translate-x-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
+                    <span class="text-xs font-bold text-primary-foreground">6</span>
+                </span>
+                <div class="pl-8">
+                    <h3 class="text-lg font-semibold dark:text-white">Asignar Identidades por Aplicación</h3>
+                    <p class="text-muted-foreground dark:text-gray-300">
+                        Cada usuario puede tener una identidad por cada relying-party o trusted-client, indicando sus roles específicos.
+                    </p>
+                </div>
+            </li>
+        </ol>        
       </div>
     </section>
 
