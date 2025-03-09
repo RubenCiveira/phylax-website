@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phylax - Gestión de Identidades</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    
+    <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center py-10 shadow-lg">
+        <h1 class="text-4xl font-bold opacity-0" id="title">Phylax</h1>
+        <p class="text-lg mt-2 opacity-0" id="subtitle">Gestión de Identidades ligera y escalable</p>
+    </header>
+    
+    <main class="max-w-5xl mx-auto p-6">
+        <section class="bg-white shadow-md rounded-lg p-8 mt-10 scroll-trigger opacity-0">
+            <h2 class="text-2xl font-semibold">¿Qué es Phylax?</h2>
+            <p class="mt-4">Phylax es un servidor de gestión de identidades optimizado para microservicios, basado en OIDC y RCAB, con un arranque ultra rápido y un consumo de memoria mínimo.</p>
+        </section>
+        
+        <section class="bg-white shadow-md rounded-lg p-8 mt-10 scroll-trigger opacity-0">
+            <h2 class="text-2xl font-semibold">Características Clave</h2>
+            <ul class="list-disc pl-6 mt-4">
+                <li>Soporte para OIDC y RCAB</li>
+                <li>Microservicio Quarkus ultra ligero</li>
+                <li>Escalabilidad bajo demanda</li>
+                <li>Gestión flexible de identidades</li>
+            </ul>
+        </section>
+        
+        <section class="bg-white shadow-md rounded-lg p-8 mt-10 scroll-trigger opacity-0">
+            <h2 class="text-2xl font-semibold">Casos de Uso</h2>
+            <p class="mt-4">Phylax es ideal para plataformas SaaS, arquitecturas Zero Trust y entornos multi-tenant.</p>
+        </section>
+        
+        <section class="bg-white shadow-md rounded-lg p-8 mt-10 scroll-trigger opacity-0">
+            <h2 class="text-2xl font-semibold">Contacto</h2>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="mt-4">
+                <label class="block mb-2">Nombre:</label>
+                <input type="text" name="name" class="w-full p-2 border rounded mb-4">
+                
+                <label class="block mb-2">Correo Electrónico:</label>
+                <input type="email" name="email" class="w-full p-2 border rounded mb-4">
+                
+                <label class="block mb-2">Mensaje:</label>
+                <textarea name="message" class="w-full p-2 border rounded mb-4"></textarea>
+                
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Enviar</button>
+            </form>
+        </section>
+    </main>
+    
+    <script>
+        gsap.to("#title", { opacity: 1, y: -10, duration: 1 });
+        gsap.to("#subtitle", { opacity: 1, y: -10, duration: 1, delay: 0.3 });
+        
+        gsap.utils.toArray(".scroll-trigger").forEach(section => {
+            gsap.to(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 1,
+                y: -20,
+                duration: 1
+            });
+        });
+    </script>
+    
+</body>
+</html>
