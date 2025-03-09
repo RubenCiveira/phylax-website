@@ -343,7 +343,7 @@
           </div>
         </div>
         <div class="rounded-lg border bg-background p-6 shadow-md" data-aos="fade-left" data-aos-duration="1000">
-          <form class="space-y-4" id="contact-form" method="POST" action="https://getform.io/f/amdkjdnb">
+          <form class="space-y-4" id="contact-form" method="POST">
             <div class="grid grid-cols-2 gap-4">
               <div class="space-y-2">
                 <label for="first-name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
@@ -355,7 +355,7 @@
                 <label for="last-name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Apellidos
                 </label>
-                <input id="last-name" placeholder="Apellidos" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" />
+                <input name="last-name" id="last-name" placeholder="Apellidos" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" />
               </div>
             </div>
             <div class="space-y-2">
@@ -422,10 +422,30 @@
     });
 
     // Simple form handling
-    // document.getElementById('contact-form').addEventListener('submit', function(e) {
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
     //   e.preventDefault();
-    //   alert('Gracias por tu feedback sobre Phylax. Aprecio mucho tu interés en este side project.');
-    // });
+       const formData = new FormData(form);
+
+      const encodedEndpoint = "aHR0cHM6Ly90dWRvbWluaW8uY29tL25uL3dlYmhvb2svY29udGFjdG8=";
+      const endpoint = 'https://bridgit.civeira.net/webhook-test/100514f7-aff7-4ee9-ace7-cca45da6c751';// atob(encodedEndpoint);
+
+       try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          body: formData,
+          headers: {
+            "X-Requested-With": "XMLHttpRequest",
+          },
+        });
+        console.log( "RESPUESTA", response);
+        if (!response.ok) throw new Error("Error en el envío del formulario");
+        alert('Gracias por tu feedback sobre Phylax. Aprecio mucho tu interés en este side project.');
+        form.reset();
+      } catch (error) {
+        alert("Hubo un problema al enviar el formulario. Inténtalo más tarde.");
+      }
+      
+    });
 
     // Make all links smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -436,6 +456,8 @@
         });
       });
     });
+
+    
   </script>
 </body>
 </html>
