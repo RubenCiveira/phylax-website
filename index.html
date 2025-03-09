@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phylax - Gestión de Identidades</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Phylax - Gestión Avanzada de Identidades</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
             background: linear-gradient(135deg, #1e293b, #334155);
             color: white;
             overflow-x: hidden;
@@ -21,8 +21,8 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80') no-repeat center center/cover;
-            opacity: 0.2;
+            background: url('/api/placeholder/1600/900') no-repeat center center/cover;
+            opacity: 0.1;
             z-index: -1;
         }
         .container {
@@ -33,26 +33,150 @@
             z-index: 10;
         }
         .section {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .grid-item {
-            background: rgba(255, 255, 255, 0.25);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-            text-align: center;
+            margin-bottom: 60px;
             opacity: 0;
+            transform: translateY(30px);
+        }
+        /* Timeline Styling */
+        .timeline {
+            position: relative;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 55%;
+            margin-left: auto;
+        }
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            background: #4F46E5;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(79, 70, 229, 0.7);
+            z-index: 10;
+        }
+        .timeline-connector {
+            position: absolute;
+            top: 22px;
+            width: calc(50% - 12px);
+            height: 2px;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        .timeline-item:nth-child(odd) .timeline-connector {
+            right: calc(50% + 12px);
+        }
+        .timeline-item:nth-child(even) .timeline-connector {
+            left: calc(50% + 12px);
+        }
+        .timeline-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #4F46E5;
+        }
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .timeline-description {
+            font-size: 14px;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+        /* Feature and Use Case Cards */
+        .feature-card, .usecase-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 24px;
+            height: 100%;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        .feature-card:hover, .usecase-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+        .feature-icon, .usecase-icon {
+            background: rgba(79, 70, 229, 0.2);
+            color: #4F46E5;
+            border-radius: 12px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+        /* Micro-indicator for performance metrics */
+        .micro-indicator {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(79, 70, 229, 0.2);
+            border-radius: 16px;
+            padding: 4px 12px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .micro-indicator-icon {
+            margin-right: 6px;
+            color: #4F46E5;
+        }
+        /* Animation classes */
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        .feature-grid, .usecase-grid {
+            opacity: 0;
+            transform: translateY(30px);
         }
     </style>
 </head>
@@ -60,78 +184,319 @@
     <div class="banner"></div>
     
     <div class="container">
-        <section class="section scroll-trigger opacity-0">
-            <h2 class="text-2xl font-semibold">¿Qué es Phylax?</h2>
-            <p class="mt-4">Phylax es un servidor de gestión de identidades optimizado para microservicios, basado en OIDC y RCAB, con un arranque ultra rápido y un consumo de memoria mínimo.</p>
-        </section>
+        <header class="py-16 text-center">
+            <h1 class="text-5xl font-bold mb-6">Phylax</h1>
+            <p class="text-2xl opacity-80 mb-8">Gestión Avanzada de Identidades para la Era Cloud-Native</p>
+            <div class="flex justify-center space-x-4">
+                <div class="micro-indicator">
+                    <span class="micro-indicator-icon">⚡</span>
+                    <span>Arranque < 0.5s</span>
+                </div>
+                <div class="micro-indicator">
+                    <span class="micro-indicator-icon">💾</span>
+                    <span>20-90MB RAM</span>
+                </div>
+                <div class="micro-indicator">
+                    <span class="micro-indicator-icon">🔒</span>
+                    <span>OIDC + RBAC</span>
+                </div>
+                <div class="micro-indicator">
+                    <span class="micro-indicator-icon">🧩</span>
+                    <span>Microservicio Quarkus</span>
+                </div>
+            </div>
+        </header>
         
-        <section class="section mt-10 scroll-trigger opacity-0">
-            <h2 class="text-2xl font-semibold">Características Clave</h2>
-            <div class="grid-container">
-                <div class="grid-item">Soporte para OIDC y RCAB</div>
-                <div class="grid-item">Microservicio Quarkus ultra ligero</div>
-                <div class="grid-item">Escalabilidad bajo demanda</div>
-                <div class="grid-item">Gestión flexible de identidades</div>
-                <div class="grid-item">Tiempo de arranque inferior a 0.5s</div>
-                <div class="grid-item">Consumo de memoria entre 20MB y 90MB</div>
+        <!-- Características Principales -->
+        <section class="section" id="features">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Características Principales</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 feature-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="text-xl font-semibold mb-3">Rendimiento Ultraligero</h3>
+                    <p>Servidor Java optimizado con Quarkus que consume entre 20MB y 90MB de RAM con tiempos de arranque inferiores a 0.5 segundos.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3 class="text-xl font-semibold mb-3">Arquitectura Flexible</h3>
+                    <p>Diseñado como microservicio que puede ser desplegado en cualquier entorno, permitiendo escalado automático bajo demanda.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3 class="text-xl font-semibold mb-3">Estándares Abiertos</h3>
+                    <p>Implementación completa de OIDC (OpenID Connect) y RBAC (Role Based Access Control) para autenticación y autorización seguras.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🏢</div>
+                    <h3 class="text-xl font-semibold mb-3">Multi-tenancy Nativo</h3>
+                    <p>Soporte completo para múltiples inquilinos (tenants) con aislamiento total y configuración independiente de aplicaciones.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3 class="text-xl font-semibold mb-3">Modelo de Seguridad Granular</h3>
+                    <p>Definición precisa de recursos, scopes y dominios de seguridad para un control de acceso preciso y adaptable.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="text-xl font-semibold mb-3">Integración Sencilla</h3>
+                    <p>Fácil integración con aplicaciones mediante Relying-Parties y Trusted-Clients sin cambios significativos en código existente.</p>
+                </div>
             </div>
         </section>
         
-        <section class="section mt-10 scroll-trigger opacity-0">
-            <h2 class="text-2xl font-semibold">Casos de Uso</h2>
-            <div class="grid-container">
-                <div class="grid-item">Plataformas SaaS</div>
-                <div class="grid-item">Arquitecturas Zero Trust</div>
-                <div class="grid-item">Entornos multi-tenant</div>
-                <div class="grid-item">Autenticación centralizada para microservicios</div>
-                <div class="grid-item">Gestión de accesos basada en roles</div>
-                <div class="grid-item">Control granular de permisos</div>
+        <!-- Timeline de Configuración -->
+        <section class="section" id="setup">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Flujo de Configuración</h2>
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content fade-in-left">
+                        <div class="timeline-number">01</div>
+                        <div class="timeline-title">Registrar Relying-Parties y Trusted-Clients</div>
+                        <div class="timeline-description">
+                            Define las aplicaciones para las que Phylax proporcionará servicios de identidad, configurando sus endpoints y credenciales.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content fade-in-right">
+                        <div class="timeline-number">02</div>
+                        <div class="timeline-title">Definir Resources y Scopes</div>
+                        <div class="timeline-description">
+                            Registra los recursos protegidos y define scopes (permisos) que determinan qué acciones se pueden realizar sobre cada recurso.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content fade-in-left">
+                        <div class="timeline-number">03</div>
+                        <div class="timeline-title">Configurar Dominios de Seguridad</div>
+                        <div class="timeline-description">
+                            Crea grupos lógicos de permisos que definen fronteras de seguridad y facilitan la gestión de autorizaciones a gran escala.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content fade-in-right">
+                        <div class="timeline-number">04</div>
+                        <div class="timeline-title">Crear Tenants</div>
+                        <div class="timeline-description">
+                            Establece inquilinos independientes que pueden acceder a todas o a un subconjunto específico de las aplicaciones registradas.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content fade-in-left">
+                        <div class="timeline-number">05</div>
+                        <div class="timeline-title">Definir Roles por Tenant</div>
+                        <div class="timeline-description">
+                            Agrupa dominios de seguridad en roles personalizados dentro de cada tenant para facilitar la asignación de permisos.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content fade-in-right">
+                        <div class="timeline-number">06</div>
+                        <div class="timeline-title">Asignar Identidades a Usuarios</div>
+                        <div class="timeline-description">
+                            Crea usuarios y asígnales identidades específicas para cada aplicación, definiendo sus roles y permisos asociados.
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
-        <section class="section mt-10 scroll-trigger opacity-0">
-            <h2 class="text-2xl font-semibold">Contacto</h2>
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="mt-4">
-                <label class="block mb-2">Nombre:</label>
-                <input type="text" name="name" class="w-full p-2 border rounded mb-4 bg-gray-800 text-white">
+        <!-- Casos de Uso -->
+        <section class="section" id="usecases">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Casos de Uso</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 usecase-grid">
+                <!-- Use Case 1 -->
+                <div class="usecase-card">
+                    <div class="usecase-icon">🏛️</div>
+                    <h3 class="text-xl font-semibold mb-3">Entidades Financieras</h3>
+                    <p class="mb-4">Gestión de identidades para aplicaciones bancarias con estrictos requisitos de seguridad y cumplimiento normativo.</p>
+                    <ul class="list-disc pl-5 space-y-2 opacity-80">
+                        <li>Control de acceso granular a operaciones bancarias</li>
+                        <li>Segregación de funciones para prevenir fraudes</li>
+                        <li>Trazabilidad completa de autorizaciones</li>
+                    </ul>
+                </div>
                 
-                <label class="block mb-2">Correo Electrónico:</label>
-                <input type="email" name="email" class="w-full p-2 border rounded mb-4 bg-gray-800 text-white">
+                <!-- Use Case 2 -->
+                <div class="usecase-card">
+                    <div class="usecase-icon">🏥</div>
+                    <h3 class="text-xl font-semibold mb-3">Sector Sanitario</h3>
+                    <p class="mb-4">Protección de datos sensibles de pacientes con control de acceso basado en roles y permisos contextuales.</p>
+                    <ul class="list-disc pl-5 space-y-2 opacity-80">
+                        <li>Restricción de acceso a historiales médicos</li>
+                        <li>Permisos dinámicos según especialidad médica</li>
+                        <li>Cumplimiento GDPR y normativas sanitarias</li>
+                    </ul>
+                </div>
                 
-                <label class="block mb-2">Mensaje:</label>
-                <textarea name="message" class="w-full p-2 border rounded mb-4 bg-gray-800 text-white"></textarea>
+                <!-- Use Case 3 -->
+                <div class="usecase-card">
+                    <div class="usecase-icon">🛒</div>
+                    <h3 class="text-xl font-semibold mb-3">E-commerce Multitenancy</h3>
+                    <p class="mb-4">Plataformas de comercio electrónico que dan servicio a múltiples marcas o vendedores independientes.</p>
+                    <ul class="list-disc pl-5 space-y-2 opacity-80">
+                        <li>Aislamiento entre vendedores con datos compartidos</li>
+                        <li>Gestión centralizada con permisos distribuidos</li>
+                        <li>Escalado automático en períodos de alta demanda</li>
+                    </ul>
+                </div>
                 
-                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Enviar</button>
+                <!-- Use Case 4 -->
+                <div class="usecase-card">
+                    <div class="usecase-icon">🌐</div>
+                    <h3 class="text-xl font-semibold mb-3">Arquitecturas Microservicios</h3>
+                    <p class="mb-4">Autenticación y autorización centralizada para ecosistemas de microservicios distribuidos.</p>
+                    <ul class="list-disc pl-5 space-y-2 opacity-80">
+                        <li>Integración vía API Gateway</li>
+                        <li>Propagación de identidad entre servicios</li>
+                        <li>Despliegue serverless con arranque bajo demanda</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Formulario de Contacto -->
+        <section class="section text-center" id="contact">
+            <h2 class="text-3xl font-semibold mb-6">¿Interesado en Phylax?</h2>
+            <p class="mb-8 opacity-80">Déjanos tus datos y te contactaremos para discutir cómo Phylax puede resolver tus necesidades de gestión de identidades.</p>
+            <form class="max-w-md mx-auto">
+                <div class="mb-4">
+                    <input type="text" placeholder="Nombre" class="w-full p-3 rounded bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div class="mb-4">
+                    <input type="email" placeholder="Email profesional" class="w-full p-3 rounded bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div class="mb-4">
+                    <input type="text" placeholder="Empresa / Organización" class="w-full p-3 rounded bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div class="mb-6">
+                    <textarea placeholder="¿Qué necesidades de gestión de identidades tienes?" class="w-full p-3 rounded bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500 h-32"></textarea>
+                </div>
+                <button type="submit" class="bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-indigo-700 transition duration-300">
+                    Solicitar Información
+                </button>
             </form>
         </section>
+        
+        <!-- Footer -->
+        <footer class="text-center py-8 opacity-70 text-sm">
+            <p>Phylax - Proyecto Personal de Gestión de Identidades © 2025</p>
+        </footer>
     </div>
     
     <script>
-        gsap.utils.toArray(".scroll-trigger").forEach(section => {
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animate sections when they enter viewport
+        gsap.utils.toArray(".section").forEach(section => {
             gsap.to(section, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
                 scrollTrigger: {
                     trigger: section,
                     start: "top 80%",
                     toggleActions: "play none none none"
-                },
-                opacity: 1,
-                y: -20,
-                duration: 1
+                }
             });
         });
-
-        gsap.utils.toArray(".grid-item").forEach((item, index) => {
-            gsap.to(item, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                },
-                opacity: 1,
-                y: -10,
-                duration: 0.8,
-                delay: index * 0.2
-            });
+        
+        // Animate timeline items
+        gsap.utils.toArray(".fade-in-left").forEach(item => {
+            gsap.fromTo(item, 
+                { opacity: 0, x: -50 },
+                { 
+                    opacity: 1, 
+                    x: 0, 
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+        
+        gsap.utils.toArray(".fade-in-right").forEach(item => {
+            gsap.fromTo(item, 
+                { opacity: 0, x: 50 },
+                { 
+                    opacity: 1, 
+                    x: 0, 
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+        
+        // Animate feature grid
+        gsap.to(".feature-grid", {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: ".feature-grid",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            }
+        });
+        
+        // Animate usecase grid
+        gsap.to(".usecase-grid", {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: ".usecase-grid",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            }
         });
     </script>
 </body>
