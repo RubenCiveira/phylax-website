@@ -443,7 +443,7 @@
           </div>
         </div>
         <div class="rounded-lg border bg-background p-6 shadow-md dark:bg-gray-800 dark:border-gray-700" data-aos="fade-left" data-aos-duration="1000">
-          <form class="space-y-4" id="contact-form">
+          <form class="space-y-4" id="contact-form" method="POST">
             <div class="grid grid-cols-2 gap-4">
               <div class="space-y-2">
                 <label for="first-name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 dark:text-white">
@@ -590,11 +590,8 @@
         // Simple form handling
         document.addEventListener("DOMContentLoaded", function () {
             // Codifica la URL del endpoint en Base64 para evitar exposición directa
-            const encodedUrl = 
-                "aHR0cHM6Ly9icmlkZ2l0LmNpdmVpcmEubmV0L3dlYmhvb2stdGVzdC8xMDA1MTRmNy1hZmY3LTRlZTktYWNlNy1jY2E0NWRhNmM3NTE=";
-                // "aHR0cHM6Ly9icmlkZ2l0LmNpdmVpcmEubmV0L3dlYmhvb2svMTAwNTE0ZjctYWZmNy00ZWU5LWFjZTctY2NhNDVkYTZjNzUx"; // Reemplaza con tu endpoint codificado
+            const encodedUrl = 'aHR0cHM6Ly9icmlkZ2l0LmNpdmVpcmEubmV0L3dlYmhvb2svMTAwNTE0ZjctYWZmNy00ZWU5LWFjZTctY2NhNDVkYTZjNzUx';
             const endpoint = atob(encodedEndpoint);
-            // Decodifica y asigna la URL al formulario al cargar la página
             document.getElementById("contact-form").action = endpoint;
         });
 
