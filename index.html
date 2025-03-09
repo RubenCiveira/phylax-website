@@ -476,7 +476,7 @@
               </label>
               <textarea id="message" name="message" placeholder="Cuéntenos sobre su interés en Phylax..." class="flex min-h-[120px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-white dark:placeholder:text-gray-500"></textarea>
             </div>
-            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+            <div class="g-recaptcha" data-sitekey="6LedUe8qAAAAACX9nazDQdZ4B8doxagAg0cRCQps"></div>
             <button type="submit" class="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring w-full h-10">
               Enviar Mensaje
             </button>
@@ -546,12 +546,6 @@
       }
     });
 
-    // Simple form handling
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Gracias por su interés en Phylax. Nos pondremos en contacto con usted pronto.');
-    });
-
     // Make all links smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -596,7 +590,9 @@
         // Simple form handling
         document.addEventListener("DOMContentLoaded", function () {
             // Codifica la URL del endpoint en Base64 para evitar exposición directa
-            const encodedUrl = "aHR0cHM6Ly9icmlkZ2l0LmNpdmVpcmEubmV0L3dlYmhvb2svMTAwNTE0ZjctYWZmNy00ZWU5LWFjZTctY2NhNDVkYTZjNzUx"; // Reemplaza con tu endpoint codificado
+            const encodedUrl = 
+                "aHR0cHM6Ly9icmlkZ2l0LmNpdmVpcmEubmV0L3dlYmhvb2stdGVzdC8xMDA1MTRmNy1hZmY3LTRlZTktYWNlNy1jY2E0NWRhNmM3NTE=";
+                // "aHR0cHM6Ly9icmlkZ2l0LmNpdmVpcmEubmV0L3dlYmhvb2svMTAwNTE0ZjctYWZmNy00ZWU5LWFjZTctY2NhNDVkYTZjNzUx"; // Reemplaza con tu endpoint codificado
             const endpoint = atob(encodedEndpoint);
             // Decodifica y asigna la URL al formulario al cargar la página
             document.getElementById("contact-form").action = endpoint;
@@ -605,6 +601,6 @@
     // Verificar parámetro 'send' al cargar la página
     window.addEventListener('load', checkForSendParameter);
   </script>
-  <script src="https://www.google.com/recaptcha/api.js?render=6LedUe8qAAAAACX9nazDQdZ4B8doxagAg0cRCQps"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
